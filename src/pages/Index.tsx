@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
@@ -44,12 +43,10 @@ const Index = () => {
                 </Link>
               </div>
               <div className="flex justify-center lg:justify-end relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-xl transform rotate-6 animate-pulse"></div>
-                <img 
-                  src="/lovable-uploads/011c4ca9-bb12-4653-a841-276b0462f834.png" 
-                  alt="StaxED Interface" 
-                  className="rounded-2xl shadow-2xl max-w-full h-auto relative z-10 transform hover:-rotate-2 transition-transform duration-500"
-                />
+                <div className="hidden lg:block absolute -inset-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-xl transform rotate-6 animate-pulse"></div>
+                <div className="text-center lg:text-right w-full text-gray-300">
+                  Visualization Coming Soon
+                </div>
               </div>
             </div>
             
