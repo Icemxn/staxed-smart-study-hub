@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -96,6 +97,40 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-staxed-navy text-white min-h-screen;
+  }
+
+  h1 {
+    @apply text-3xl font-bold sm:text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-2xl font-bold sm:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl font-bold sm:text-2xl;
+  }
+}
+
+@layer components {
+  .staxed-container {
+    @apply max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8;
+  }
+
+  .staxed-card {
+    @apply bg-staxed-darkBlue rounded-2xl p-6 shadow-md;
+  }
+
+  .staxed-button-primary {
+    @apply bg-staxed-blue hover:bg-blue-600 text-white py-3 px-6 rounded-lg font-medium transition-all flex items-center justify-center gap-2;
+  }
+  
+  .staxed-button-secondary {
+    @apply bg-staxed-darkBlue hover:bg-opacity-80 text-white py-3 px-6 rounded-lg font-medium transition-all flex items-center justify-center gap-2;
+  }
+
+  .staxed-input {
+    @apply bg-staxed-navy/70 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-staxed-blue;
   }
 }
