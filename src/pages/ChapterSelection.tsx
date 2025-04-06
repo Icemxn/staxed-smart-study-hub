@@ -4,14 +4,24 @@ import { useNavigate } from 'react-router-dom';
 import Logo from '../components/Logo';
 import Footer from '../components/Footer';
 import ChapterCard from '../components/ChapterCard';
-import { ArrowLeft } from 'lucide-react';
+import BackButton from '../components/BackButton';
 import { useAppContext } from '../contexts/AppContext';
 
 const ChapterSelection = () => {
   const navigate = useNavigate();
   const { selectedSubject } = useAppContext();
   
-  const chapters = [
+  const recentChapters = [
+    { number: 3, title: "Advanced Topics I", progress: 75 },
+    { number: 5, title: "Practical Applications", progress: 30 },
+  ];
+  
+  const suggestedChapters = [
+    { number: 4, title: "Advanced Topics II" },
+    { number: 6, title: "Theory and Practice" },
+  ];
+  
+  const allChapters = [
     { number: 1, title: "Introduction to Subject" },
     { number: 2, title: "Basic Concepts" },
     { number: 3, title: "Advanced Topics I" },
@@ -26,32 +36,79 @@ const ChapterSelection = () => {
   
   return (
     <div className="min-h-screen flex flex-col animate-fade-in">
+      {/* Background elements */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-blue-900/20 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-purple-900/20 to-transparent rounded-full blur-3xl"></div>
+      </div>
+      
       <div className="staxed-container py-6">
         <div className="flex justify-between items-center">
           <Logo />
-          <button 
-            onClick={() => navigate('/subjects')}
-            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
-          >
-            <ArrowLeft size={18} />
-            <span>Back to Subjects</span>
-          </button>
+          <BackButton to="/subjects" label="Back to Subjects" />
         </div>
       </div>
       
       <main className="flex-grow staxed-container py-10">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="mb-2">Chapters</h1>
-          <p className="text-xl text-gray-300 mb-8">{selectedSubject}</p>
+        <div className="max-w-5xl mx-auto">
+          <h1 className="mb-2 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">{selectedSubject}</h1>
           
-          <div className="space-y-4">
-            {chapters.map((chapter) => (
-              <ChapterCard 
-                key={chapter.number}
-                number={chapter.number}
-                title={chapter.title}
-              />
-            ))}
+          {/* Recently Studied */}
+          {recentChapters.length > 0 && (
+            <div className="mb-10">
+              <h2 className="text-xl font-medium mb-4 flex items-center">
+                <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                Recently Studied
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {recentChapters.map((chapter) => (
+                  <ChapterCard 
+                    key={chapter.number}
+                    number={chapter.number}
+                    title={chapter.title}
+                    progress={chapter.progress}
+                    isRecent={true}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {/* Suggested Chapters */}
+          {suggestedChapters.length > 0 && (
+            <div className="mb-10">
+              <h2 className="text-xl font-medium mb-4 flex items-center">
+                <span className="inline-block w-2 h-2 bg-amber-500 rounded-full mr-2"></span>
+                Suggested Next
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {suggestedChapters.map((chapter) => (
+                  <ChapterCard 
+                    key={chapter.number}
+                    number={chapter.number}
+                    title={chapter.title}
+                    isSuggested={true}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {/* All Chapters */}
+          <div>
+            <h2 className="text-xl font-medium mb-4 flex items-center">
+              <span className="inline-block w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
+              All Chapters
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {allChapters.map((chapter) => (
+                <ChapterCard 
+                  key={chapter.number}
+                  number={chapter.number}
+                  title={chapter.title}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </main>
