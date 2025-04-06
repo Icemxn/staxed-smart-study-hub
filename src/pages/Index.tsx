@@ -7,12 +7,13 @@ import { Book, MessageCircle, Presentation, LineChart, Settings, ArrowRight, Che
 
 const Index = () => {
   return (
-    <div className="animate-fade-in overflow-hidden">
-      {/* Background elements */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-1/2 h-screen bg-gradient-to-br from-blue-900/20 to-transparent rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/4"></div>
-        <div className="absolute bottom-0 right-0 w-1/2 h-screen bg-gradient-to-tl from-purple-900/20 to-transparent rounded-full blur-3xl transform translate-x-1/2 translate-y-1/4"></div>
-        <div className="absolute top-1/4 right-1/3 w-64 h-64 rounded-full bg-staxed-blue/5 animate-pulse"></div>
+    <div className="animate-fade-in overflow-hidden relative">
+      {/* Enhanced Background Elements */}
+      <div className="fixed inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-0 left-0 w-1/2 h-screen bg-gradient-to-br from-blue-900/30 to-transparent rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/4 opacity-50"></div>
+        <div className="absolute bottom-0 right-0 w-1/2 h-screen bg-gradient-to-tl from-purple-900/30 to-transparent rounded-full blur-3xl transform translate-x-1/2 translate-y-1/4 opacity-50"></div>
+        <div className="absolute top-1/4 right-1/3 w-64 h-64 rounded-full bg-staxed-blue/10 animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-48 h-48 rounded-full bg-purple-500/10 animate-pulse delay-500"></div>
       </div>
 
       <header className="py-6 relative z-10">
@@ -44,8 +45,8 @@ const Index = () => {
               </div>
               <div className="flex justify-center lg:justify-end relative">
                 <div className="hidden lg:block absolute -inset-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-xl transform rotate-6 animate-pulse"></div>
-                <div className="text-center lg:text-right w-full text-gray-300">
-                  Visualization Coming Soon
+                <div className="w-full h-64 bg-gradient-to-br from-staxed-blue/10 to-purple-600/10 rounded-2xl flex items-center justify-center text-gray-400 opacity-70">
+                  <span className="text-sm italic">Innovative Learning Visualization</span>
                 </div>
               </div>
             </div>
