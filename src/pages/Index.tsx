@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
@@ -45,8 +46,21 @@ const Index = () => {
               </div>
               <div className="flex justify-center lg:justify-end relative">
                 <div className="hidden lg:block absolute -inset-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-xl transform rotate-6 animate-pulse"></div>
-                <div className="w-full h-64 bg-gradient-to-br from-staxed-blue/10 to-purple-600/10 rounded-2xl flex items-center justify-center text-gray-400 opacity-70">
-                  <span className="text-sm italic">Innovative Learning Visualization</span>
+                <div className="w-full h-64 relative rounded-2xl overflow-hidden shadow-xl">
+                  <img 
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1074" 
+                    alt="AI Learning Platform" 
+                    className="w-full h-full object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-staxed-darkBlue/80 to-transparent flex flex-col justify-end p-6">
+                    <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                        <span className="text-white text-sm font-medium">AI Tutor Active</span>
+                      </div>
+                      <p className="text-white/90 text-sm">Converting static content into interactive learning...</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -10,6 +10,7 @@ import Onboarding from "./pages/Onboarding";
 import SubjectSelection from "./pages/SubjectSelection";
 import ChapterSelection from "./pages/ChapterSelection";
 import StudyModeSelection from "./pages/StudyModeSelection";
+import Quiz from "./pages/Quiz";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/subjects" element={<SubjectSelection />} />
             <Route path="/chapters" element={<ChapterSelection />} />
             <Route path="/study-mode" element={<StudyModeSelection />} />
+            <Route path="/quiz" element={<Quiz />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
