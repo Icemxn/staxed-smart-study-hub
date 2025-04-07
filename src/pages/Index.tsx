@@ -15,6 +15,14 @@ const Index = () => {
         <div className="absolute bottom-0 right-0 w-1/2 h-screen bg-gradient-to-tl from-purple-900/30 to-transparent rounded-full blur-3xl transform translate-x-1/2 translate-y-1/4 opacity-50"></div>
         <div className="absolute top-1/4 right-1/3 w-64 h-64 rounded-full bg-staxed-blue/10 animate-pulse"></div>
         <div className="absolute bottom-1/4 left-1/4 w-48 h-48 rounded-full bg-purple-500/10 animate-pulse delay-500"></div>
+        
+        {/* Additional premium visual elements */}
+        <div className="absolute top-1/2 left-1/3 w-32 h-32 border border-white/10 rounded-full"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-48 h-48 border border-white/5 rounded-full"></div>
+        <div className="absolute top-1/3 left-2/3 w-64 h-64 bg-gradient-to-br from-staxed-blue/5 to-purple-500/5 rounded-full blur-2xl"></div>
+        
+        {/* Animated dots grid for premium effect */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PGNpcmNsZSBjeD0iMTUiIGN5PSIxNSIgcj0iMiIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMTUiIHI9IjIiLz48Y2lyY2xlIGN4PSI0NSIgY3k9IjE1IiByPSIyIi8+PGNpcmNsZSBjeD0iMTUiIGN5PSIzMCIgcj0iMiIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjIiLz48Y2lyY2xlIGN4PSI0NSIgY3k9IjMwIiByPSIyIi8+PGNpcmNsZSBjeD0iMTUiIGN5PSI0NSIgcj0iMiIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iNDUiIHI9IjIiLz48Y2lyY2xlIGN4PSI0NSIgY3k9IjQ1IiByPSIyIi8+PC9nPjwvZz48L3N2Zz4=')]"></div>
       </div>
 
       <header className="py-6 relative z-10">
@@ -37,37 +45,51 @@ const Index = () => {
         <section className="py-16 md:py-24">
           <div className="staxed-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="animate-slide-up">
+              <div className="animate-slide-up order-2 lg:order-1">
                 <h1 className="mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">The AI-Powered Learning Platform for Your School</h1>
                 <p className="text-xl text-gray-300 mb-8">Turn every textbook into a smart, interactive tutor</p>
                 <Link to="/onboarding" className="staxed-button-primary text-lg group">
                   Get Started <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
-              <div className="flex justify-center lg:justify-end relative">
-                <div className="hidden lg:block absolute -inset-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-xl transform rotate-6 animate-pulse"></div>
-                <div className="w-full h-64 relative rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1074" 
-                    alt="AI Learning Platform" 
-                    className="w-full h-full object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-staxed-darkBlue/80 to-transparent flex flex-col justify-end p-6">
-                    <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                        <span className="text-white text-sm font-medium">AI Tutor Active</span>
+              <div className="flex justify-center lg:justify-end relative order-1 lg:order-2">
+                {/* Premium visual hero element */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-xl transform rotate-6 animate-pulse"></div>
+                <div className="w-full max-w-md relative overflow-hidden rounded-2xl">
+                  <div className="aspect-[4/3] bg-gradient-to-tr from-staxed-darkBlue/80 via-staxed-blue/30 to-purple-600/30 rounded-2xl overflow-hidden">
+                    {/* 3D floating UI elements to showcase the platform */}
+                    <div className="absolute top-1/4 left-1/4 w-32 h-24 bg-white/5 backdrop-blur-md rounded-lg border border-white/10 shadow-lg transform -rotate-6 translate-y-4">
+                      <div className="p-2">
+                        <div className="w-full h-2 bg-staxed-blue/40 rounded-full mb-2"></div>
+                        <div className="w-2/3 h-2 bg-white/20 rounded-full"></div>
                       </div>
-                      <p className="text-white/90 text-sm">Converting static content into interactive learning...</p>
                     </div>
+                    <div className="absolute top-1/3 right-1/4 w-40 h-32 bg-white/5 backdrop-blur-md rounded-lg border border-white/10 shadow-lg transform rotate-3 translate-y-8">
+                      <div className="p-3">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                          <div className="w-full h-2 bg-white/20 rounded-full"></div>
+                        </div>
+                        <div className="w-full h-2 bg-white/15 rounded-full mb-2"></div>
+                        <div className="w-3/4 h-2 bg-white/15 rounded-full mb-2"></div>
+                        <div className="w-1/2 h-2 bg-white/15 rounded-full"></div>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-1/4 left-1/3 w-36 h-20 bg-white/5 backdrop-blur-md rounded-lg border border-white/10 shadow-lg transform -rotate-12 translate-y-10">
+                      <div className="p-2">
+                        <div className="w-full h-2 bg-staxed-blue/40 rounded-full mb-2"></div>
+                        <div className="w-2/3 h-2 bg-white/20 rounded-full mb-2"></div>
+                        <div className="w-1/2 h-2 bg-white/20 rounded-full"></div>
+                      </div>
+                    </div>
+                    {/* Decorative elements */}
+                    <div className="absolute top-1/2 left-1/2 w-16 h-16 bg-white/10 rounded-full blur-xl transform -translate-x-1/2 -translate-y-1/2"></div>
+                    <div className="absolute bottom-8 right-8 w-12 h-12 bg-staxed-blue/30 rounded-full blur-xl"></div>
+                    <div className="absolute top-8 left-8 w-10 h-10 bg-purple-500/30 rounded-full blur-xl"></div>
                   </div>
                 </div>
               </div>
             </div>
-            
-            {/* Floating dots decoration */}
-            <div className="absolute top-1/4 left-10 h-24 w-24 rounded-full bg-blue-500/5 animate-pulse"></div>
-            <div className="absolute bottom-1/3 right-10 h-16 w-16 rounded-full bg-purple-500/5 animate-pulse delay-300"></div>
           </div>
         </section>
 

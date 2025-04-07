@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Radio, RadioGroup } from "@/components/ui/radio-group";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 
 interface QuizQuestionProps {
@@ -36,7 +36,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({
                 : "bg-staxed-navy/50 hover:bg-staxed-navy/80 border border-gray-700"
             }`}
           >
-            <Radio
+            <RadioGroupItem
               value={option}
               id={`option-${index}`}
               className="text-staxed-blue"
