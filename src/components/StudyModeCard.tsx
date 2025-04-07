@@ -9,10 +9,9 @@ interface StudyModeCardProps {
   description: string;
   icon: React.ReactNode;
   color: string;
-  bgImage?: string;
 }
 
-const StudyModeCard: React.FC<StudyModeCardProps> = ({ mode, description, icon, color, bgImage }) => {
+const StudyModeCard: React.FC<StudyModeCardProps> = ({ mode, description, icon, color }) => {
   const navigate = useNavigate();
   const { setSelectedStudyMode } = useAppContext();
   
@@ -32,44 +31,41 @@ const StudyModeCard: React.FC<StudyModeCardProps> = ({ mode, description, icon, 
   return (
     <button 
       onClick={handleClick}
-      className="relative group overflow-hidden rounded-2xl h-64 w-full"
+      className="relative group overflow-hidden rounded-2xl h-64 w-full transition-all duration-300"
     >
-      {/* Enhanced background image with subtle zoom effect */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-700" 
-        style={{ backgroundImage: `url(${bgImage})` }}
-      ></div>
+      {/* Premium card with gradient background */}
+      <div className={`absolute inset-0 ${color} shadow-lg`}></div>
       
-      {/* Gradient overlay with improved color blend */}
-      <div className={`absolute inset-0 ${color} opacity-80 group-hover:opacity-75 transition-opacity duration-300`}></div>
+      {/* Decorative elements for premium feel */}
+      <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl opacity-50 -mr-8 -mt-8"></div>
+      <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/10 rounded-full blur-2xl opacity-30 -ml-10 -mb-10"></div>
       
-      {/* Added texture pattern overlay for premium feel */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDYwIEwgNjAgMCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIgLz48L3N2Zz4=')] opacity-40"></div>
-
-      {/* Added subtle geometric shapes for visual interest */}
-      <div className="absolute inset-0">
-        <div className="absolute top-4 right-4 w-20 h-20 border border-white/5 rounded-full"></div>
-        <div className="absolute bottom-4 left-4 w-16 h-16 border border-white/5 rounded-full"></div>
+      {/* Subtle pattern overlay */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDYwIEwgNjAgMCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIgLz48L3N2Zz4=')] opacity-20"></div>
+      
+      {/* Geometric decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-5 right-5 w-20 h-20 border border-white/10 rounded-full"></div>
+        <div className="absolute bottom-5 left-5 w-16 h-16 border border-white/10 rounded-full"></div>
+        <div className="absolute top-1/4 left-1/3 w-8 h-8 border border-white/5 transform rotate-45"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-12 h-12 border border-white/5 rounded-lg transform rotate-12"></div>
       </div>
       
-      {/* Enhanced content section */}
+      {/* Main content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-white">
-        {/* Improved icon container with better visual effects */}
-        <div className="rounded-full bg-white/20 p-6 mb-6 backdrop-blur-sm shadow-lg transform group-hover:scale-110 transition-transform duration-300 border border-white/10">
+        {/* Premium icon container with glassmorphism effect */}
+        <div className="rounded-full bg-white/20 backdrop-blur-sm p-6 mb-6 shadow-xl transform group-hover:scale-105 transition-transform duration-300 border border-white/20">
           {icon}
         </div>
+        
         <h3 className="text-2xl font-medium mb-3 drop-shadow-lg">{mode}</h3>
         <p className="text-center text-white/90 drop-shadow-md max-w-xs">{description}</p>
         
-        {/* Enhanced hover button with better visual effects */}
-        <div className="mt-6 bg-white/20 backdrop-blur-sm px-5 py-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg border border-white/10">
+        {/* Enhanced hover button */}
+        <div className="mt-8 bg-white/20 backdrop-blur-sm px-6 py-2.5 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl border border-white/20 font-medium">
           Open {mode}
         </div>
       </div>
-
-      {/* Added subtle corner embellishments */}
-      <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-white/10 to-transparent"></div>
-      <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-white/10 to-transparent"></div>
     </button>
   );
 };
