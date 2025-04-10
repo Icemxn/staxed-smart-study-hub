@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../contexts/AppContext';
 import Footer from '../components/Footer';
@@ -7,8 +7,61 @@ import BackButton from '../components/BackButton';
 import QuizQuestion from '../components/QuizQuestion';
 import QuizResults from '../components/QuizResults';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Upload } from 'lucide-react';
-import QuizUploader from '../components/QuizUploader';
+import { ArrowRight } from 'lucide-react';
+
+// Predefined quiz questions
+const predefinedQuestions = [
+  {
+    question: "What is the approximate percentage of nitrogen in air?",
+    options: ["21%", "78%", "1%", "50%"],
+    correctAnswer: "78%"
+  },
+  {
+    question: "Which gas is essential for respiration in living organisms?",
+    options: ["Nitrogen", "Carbon dioxide", "Oxygen", "Argon"],
+    correctAnswer: "Oxygen"
+  },
+  {
+    question: "The layer of atmosphere that contains the ozone layer is called:",
+    options: ["Troposphere", "Stratosphere", "Mesosphere", "Thermosphere"],
+    correctAnswer: "Stratosphere"
+  },
+  {
+    question: "What are the conditions necessary for rusting?",
+    options: ["Only oxygen", "Only water", "Both oxygen and water", "Neither oxygen nor water"],
+    correctAnswer: "Both oxygen and water"
+  },
+  {
+    question: "Which process helps in the renewal of oxygen in the atmosphere?",
+    options: ["Respiration", "Photosynthesis", "Combustion", "Rusting"],
+    correctAnswer: "Photosynthesis"
+  },
+  {
+    question: "What happens when hot air containing water vapor is cooled?",
+    options: ["Water vapor evaporates", "Water vapor condenses into liquid", "Water vapor disappears", "Water vapor changes to oxygen"],
+    correctAnswer: "Water vapor condenses into liquid"
+  },
+  {
+    question: "What is the pressure at sea level called?",
+    options: ["1 pascal", "1 bar", "1 atmosphere", "1 newton"],
+    correctAnswer: "1 atmosphere"
+  },
+  {
+    question: "Which of these is NOT a use of carbon dioxide?",
+    options: ["Used in fire extinguishers", "Used in photosynthesis", "Used in respiration by humans", "Used as dry ice for refrigeration"],
+    correctAnswer: "Used in respiration by humans"
+  },
+  {
+    question: "What is the main reason Earth has life while other planets in our solar system do not?",
+    options: ["Earth's size", "Earth's distance from the sun", "Earth's atmosphere", "Earth's rotation"],
+    correctAnswer: "Earth's atmosphere"
+  },
+  {
+    question: "Which gas makes up about 0.03%-0.04% of air but is vital for plants?",
+    options: ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"],
+    correctAnswer: "Carbon dioxide"
+  }
+];
 
 const Quiz = () => {
   const navigate = useNavigate();
@@ -17,12 +70,12 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
-  const [questions, setQuestions] = useState<{
-    question: string;
-    options: string[];
-    correctAnswer: string;
-  }[]>([]);
-  const [isUploading, setIsUploading] = useState(questions.length === 0);
+  const [questions] = useState(predefinedQuestions);
+  
+  useEffect(() => {
+    // Initialize user answers array based on number of questions
+    setUserAnswers(new Array(questions.length).fill(''));
+  }, [questions]);
   
   const handleAnswer = (answer: string) => {
     const newAnswers = [...userAnswers];
@@ -48,20 +101,9 @@ const Quiz = () => {
     return score;
   };
   
-  const handleQuestionsUploaded = (newQuestions: typeof questions) => {
-    setQuestions(newQuestions);
-    setUserAnswers(new Array(newQuestions.length).fill(''));
-    setIsUploading(false);
-  };
-  
   const handleRetake = () => {
     setUserAnswers(new Array(questions.length).fill(''));
     setCurrentQuestion(0);
-    setShowResults(false);
-  };
-  
-  const handleUploadMore = () => {
-    setIsUploading(true);
     setShowResults(false);
   };
   
@@ -86,7 +128,7 @@ const Quiz = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent mb-2">
-              {isUploading ? "Create Your Quiz" : showResults ? "Quiz Results" : "Quiz"}
+              {showResults ? "Quiz Results" : "Quiz"}
             </h1>
             <p className="text-xl text-gray-300">
               {selectedSubject} - Chapter {selectedChapter}
@@ -94,15 +136,12 @@ const Quiz = () => {
           </div>
           
           <div className="staxed-card">
-            {isUploading ? (
-              <QuizUploader onQuestionsUploaded={handleQuestionsUploaded} />
-            ) : showResults ? (
+            {showResults ? (
               <QuizResults 
                 questions={questions} 
                 userAnswers={userAnswers} 
                 score={calculateScore()} 
                 onRetake={handleRetake}
-                onUploadMore={handleUploadMore}
               />
             ) : (
               <>

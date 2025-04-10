@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Check, X, RefreshCw, Upload } from 'lucide-react';
+import { Check, X, RefreshCw } from 'lucide-react';
 
 interface QuizResultsProps {
   questions: {
@@ -12,15 +12,13 @@ interface QuizResultsProps {
   userAnswers: string[];
   score: number;
   onRetake: () => void;
-  onUploadMore: () => void;
 }
 
 const QuizResults: React.FC<QuizResultsProps> = ({
   questions,
   userAnswers,
   score,
-  onRetake,
-  onUploadMore
+  onRetake
 }) => {
   const percentage = Math.round((score / questions.length) * 100);
   
@@ -92,21 +90,13 @@ const QuizResults: React.FC<QuizResultsProps> = ({
         ))}
       </div>
       
-      <div className="flex flex-wrap gap-4 justify-center pt-4">
+      <div className="flex justify-center pt-4">
         <Button 
           onClick={onRetake}
           className="bg-staxed-blue hover:bg-blue-600 flex items-center gap-2"
         >
           <RefreshCw size={16} />
           Retake Quiz
-        </Button>
-        <Button 
-          onClick={onUploadMore}
-          variant="outline"
-          className="border-gray-600 text-white hover:bg-staxed-darkBlue flex items-center gap-2"
-        >
-          <Upload size={16} />
-          Upload New Questions
         </Button>
       </div>
     </div>

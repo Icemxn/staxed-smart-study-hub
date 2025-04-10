@@ -52,17 +52,20 @@ const StudyModeCard: React.FC<StudyModeCardProps> = ({ mode, description, icon, 
       </div>
       
       {/* Main content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-white">
-        {/* Premium icon container with glassmorphism effect */}
-        <div className="rounded-full bg-white/20 backdrop-blur-sm p-6 mb-6 shadow-xl transform group-hover:scale-105 transition-transform duration-300 border border-white/20">
-          {icon}
+      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-white">
+        {/* Fixed icon container with proper sizing and padding to prevent clipping */}
+        <div className="rounded-full bg-white/20 backdrop-blur-sm p-4 mb-6 shadow-xl transform group-hover:scale-105 transition-transform duration-300 border border-white/20 flex items-center justify-center">
+          {/* Ensure consistent icon sizing */}
+          <div className="text-white w-10 h-10 flex items-center justify-center">
+            {icon}
+          </div>
         </div>
         
-        <h3 className="text-2xl font-medium mb-3 drop-shadow-lg">{mode}</h3>
-        <p className="text-center text-white/90 drop-shadow-md max-w-xs">{description}</p>
+        <h3 className="text-xl font-medium mb-2 drop-shadow-lg">{mode}</h3>
+        <p className="text-center text-white/90 drop-shadow-md max-w-xs text-sm">{description}</p>
         
         {/* Enhanced hover button */}
-        <div className="mt-8 bg-white/20 backdrop-blur-sm px-6 py-2.5 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl border border-white/20 font-medium">
+        <div className="mt-6 bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl border border-white/20 font-medium text-sm">
           Open {mode}
         </div>
       </div>
