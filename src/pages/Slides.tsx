@@ -5,10 +5,12 @@ import { useAppContext } from '../contexts/AppContext';
 import PDFViewer from '../components/PDFViewer';
 import BackButton from '../components/BackButton';
 import Footer from '../components/Footer';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const SlidesPage = () => {
   const navigate = useNavigate();
   const { selectedSubject, selectedChapter, studentName, selectedGrade } = useAppContext();
+  const isMobile = useIsMobile();
   
   // URL for slides PDF
   const slidesPdfUrl = "https://drive.google.com/file/d/1cwq2TlFnaYkNsbVT51xRNDPdhSTXj0bv/view?usp=drive_link";
@@ -27,22 +29,22 @@ const SlidesPage = () => {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PGNpcmNsZSBjeD0iMTUiIGN5PSIxNSIgcj0iMSIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMTUiIHI9IjEiLz48Y2lyY2xlIGN4PSI0NSIgY3k9IjE1IiByPSIxIi8+PGNpcmNsZSBjeD0iMTUiIGN5PSIzMCIgcj0iMSIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjEiLz48Y2lyY2xlIGN4PSI0NSIgY3k9IjMwIiByPSIxIi8+PGNpcmNsZSBjeD0iMTUiIGN5PSI0NSIgcj0iMSIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iNDUiIHI9IjEiLz48Y2lyY2xlIGN4PSI0NSIgY3k9IjQ1IiByPSIxIi8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
       </div>
       
-      <div className="staxed-container py-6 flex justify-between items-center">
+      <div className="staxed-container py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0">
         <BackButton to="/study-mode" label="Back" />
-        <div className="flex items-center gap-2 text-white">
+        <div className="flex items-center gap-2 text-white bg-staxed-darkBlue/40 px-3 py-1 rounded-full text-sm">
           <span>{studentName}</span>
           <span className="text-gray-400">|</span>
           <span className="text-gray-300">{selectedGrade} Grade</span>
         </div>
       </div>
       
-      <main className="flex-grow staxed-container py-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-6">
-            <h1 className="bg-gradient-to-r from-white to-green-100 bg-clip-text text-transparent mb-2">
+      <main className="flex-grow staxed-container py-2">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-4">
+            <h1 className="bg-gradient-to-r from-white to-green-100 bg-clip-text text-transparent mb-2 text-3xl md:text-4xl lg:text-5xl">
               Slides
             </h1>
-            <p className="text-xl text-gray-300 max-w-xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-300 max-w-xl mx-auto">
               {selectedSubject} - Chapter {selectedChapter}
             </p>
           </div>

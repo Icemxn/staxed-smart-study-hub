@@ -22,11 +22,9 @@ const BackButton: React.FC<BackButtonProps> = ({ to, label }) => {
   return (
     <button 
       onClick={handleClick}
-      className="flex items-center gap-2 text-gray-300 hover:text-white transition-all group"
+      className="flex items-center gap-2 text-gray-300 hover:text-white transition-all group bg-staxed-darkBlue/30 rounded-full px-3 py-1.5"
     >
-      <div className="bg-staxed-darkBlue/80 p-1.5 rounded-full group-hover:bg-staxed-blue/20 transition-colors">
-        <ArrowLeft size={16} className="text-gray-300 group-hover:text-white transition-colors" />
-      </div>
+      <ArrowLeft size={16} className="text-gray-300 group-hover:text-white transition-colors" />
       <span>{label}</span>
     </button>
   );
