@@ -20,6 +20,10 @@ const StudyModeCard: React.FC<StudyModeCardProps> = ({ mode, description, icon, 
     
     if (mode === "Quiz") {
       navigate("/quiz");
+    } else if (mode === "Notes") {
+      navigate("/notes");
+    } else if (mode === "Slides") {
+      navigate("/slides");
     } else {
       toast({
         title: `${mode} Mode`,

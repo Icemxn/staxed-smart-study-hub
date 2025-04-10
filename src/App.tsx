@@ -10,6 +10,8 @@ import Onboarding from "./pages/Onboarding";
 import SubjectSelection from "./pages/SubjectSelection";
 import ChapterSelection from "./pages/ChapterSelection";
 import StudyModeSelection from "./pages/StudyModeSelection";
+import Notes from "./pages/Notes";
+import Slides from "./pages/Slides";
 import Quiz from "./pages/Quiz";
 import NotFound from "./pages/NotFound";
 
@@ -28,6 +30,8 @@ const App = () => (
             <Route path="/subjects" element={<SubjectSelection />} />
             <Route path="/chapters" element={<ChapterSelection />} />
             <Route path="/study-mode" element={<StudyModeSelection />} />
+            <Route path="/notes" element={<Notes />} />
+            <Route path="/slides" element={<Slides />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
