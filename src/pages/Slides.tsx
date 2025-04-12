@@ -12,8 +12,11 @@ const SlidesPage = () => {
   const { selectedSubject, selectedChapter, studentName, selectedGrade } = useAppContext();
   const isMobile = useIsMobile();
   
-  // URL for slides PDF
+  // URL for slides PDF (only for Science)
   const slidesPdfUrl = "https://drive.google.com/file/d/1cwq2TlFnaYkNsbVT51xRNDPdhSTXj0bv/view?usp=drive_link";
+  
+  // Determine if we should show "Coming Soon" based on subject
+  const isComingSoon = selectedSubject !== "Science";
   
   return (
     <div className="min-h-screen flex flex-col animate-fade-in">
@@ -50,8 +53,9 @@ const SlidesPage = () => {
           </div>
           
           <PDFViewer 
-            pdfUrl={slidesPdfUrl} 
+            pdfUrl={isComingSoon ? null : slidesPdfUrl} 
             title="Visual Presentation"
+            isComingSoon={isComingSoon}
           />
         </div>
       </main>

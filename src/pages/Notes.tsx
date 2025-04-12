@@ -12,8 +12,11 @@ const NotesPage = () => {
   const { selectedSubject, selectedChapter, studentName, selectedGrade } = useAppContext();
   const isMobile = useIsMobile();
   
-  // URL for notes PDF
+  // URL for notes PDF (only for Science)
   const notesPdfUrl = "https://drive.google.com/file/d/1HdTo5-TgTaPa66U1qf4pdy-g75xaDsbD/view?usp=drive_link";
+  
+  // Determine if we should show "Coming Soon" based on subject
+  const isComingSoon = selectedSubject !== "Science";
   
   return (
     <div className="min-h-screen flex flex-col animate-fade-in">
@@ -50,8 +53,9 @@ const NotesPage = () => {
           </div>
           
           <PDFViewer 
-            pdfUrl={notesPdfUrl} 
+            pdfUrl={isComingSoon ? null : notesPdfUrl} 
             title="Comprehensive Notes"
+            isComingSoon={isComingSoon}
           />
         </div>
       </main>
