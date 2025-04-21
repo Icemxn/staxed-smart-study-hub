@@ -4,7 +4,7 @@ import Logo from '../components/Logo';
 import Footer from '../components/Footer';
 import StudyModeCard from '../components/StudyModeCard';
 import BackButton from '../components/BackButton';
-import { BookOpen, Presentation, FileText, HelpCircle, MessageCircle } from 'lucide-react';
+import { BookOpen, Presentation, FileText, HelpCircle, MessageCircle, X } from 'lucide-react';
 import { useAppContext } from '../contexts/AppContext';
 import {
   AlertDialog,
@@ -13,6 +13,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
+  AlertDialogCancel,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
@@ -102,7 +103,12 @@ const StudyModeSelection = () => {
         </AlertDialogTrigger>
         <AlertDialogContent className="bg-gradient-to-b from-gray-900 to-gray-800 border-gray-700">
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-white">Coming Soon!</AlertDialogTitle>
+            <AlertDialogTitle className="text-white flex justify-between items-center">
+              Coming Soon!
+              <AlertDialogCancel className="hover:bg-transparent">
+                <X className="h-6 w-6 text-white hover:text-gray-300" />
+              </AlertDialogCancel>
+            </AlertDialogTitle>
             <AlertDialogDescription className="text-gray-300">
               The AI-powered StaxEd assistant will be available soon to help answer your questions and provide personalized learning support.
             </AlertDialogDescription>
@@ -114,3 +120,4 @@ const StudyModeSelection = () => {
 };
 
 export default StudyModeSelection;
+
