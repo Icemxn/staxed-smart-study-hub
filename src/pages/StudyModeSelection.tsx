@@ -4,8 +4,17 @@ import Logo from '../components/Logo';
 import Footer from '../components/Footer';
 import StudyModeCard from '../components/StudyModeCard';
 import BackButton from '../components/BackButton';
-import { BookOpen, Presentation, FileText, HelpCircle } from 'lucide-react';
+import { BookOpen, Presentation, FileText, HelpCircle, MessageCircle } from 'lucide-react';
 import { useAppContext } from '../contexts/AppContext';
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 
 const StudyModeSelection = () => {
   const { selectedSubject, selectedChapter, studentName, selectedGrade } = useAppContext();
@@ -80,6 +89,26 @@ const StudyModeSelection = () => {
       </main>
       
       <Footer />
+
+      {/* Ask StaxEd Button with Dialog */}
+      <AlertDialog>
+        <AlertDialogTrigger asChild>
+          <Button
+            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 group transition-all duration-300 shadow-lg hover:shadow-xl bg-gradient-to-r from-purple-500/90 to-blue-500/90 hover:from-purple-500 hover:to-blue-500 border-0"
+          >
+            <MessageCircle className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
+            Ask StaxEd
+          </Button>
+        </AlertDialogTrigger>
+        <AlertDialogContent className="bg-gradient-to-b from-gray-900 to-gray-800 border-gray-700">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-white">Coming Soon!</AlertDialogTitle>
+            <AlertDialogDescription className="text-gray-300">
+              The AI-powered StaxEd assistant will be available soon to help answer your questions and provide personalized learning support.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
