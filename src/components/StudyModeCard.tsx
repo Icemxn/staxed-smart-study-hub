@@ -13,7 +13,7 @@ interface StudyModeCardProps {
 
 const StudyModeCard: React.FC<StudyModeCardProps> = ({ mode, description, icon, color }) => {
   const navigate = useNavigate();
-  const { setSelectedStudyMode } = useAppContext();
+  const { setSelectedStudyMode, selectedSubject } = useAppContext();
   
   const handleClick = () => {
     setSelectedStudyMode(mode);
@@ -24,6 +24,13 @@ const StudyModeCard: React.FC<StudyModeCardProps> = ({ mode, description, icon, 
       navigate("/notes");
     } else if (mode === "Slides") {
       navigate("/slides");
+    } else if (mode === "Textbook" && selectedSubject === "Science") {
+      navigate("/textbook");
+    } else if (mode === "Textbook") {
+      toast({
+        title: `${mode} Mode`,
+        description: `${mode} mode is coming soon!`,
+      });
     } else {
       toast({
         title: `${mode} Mode`,
