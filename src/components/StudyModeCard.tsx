@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../contexts/AppContext';
@@ -25,12 +24,7 @@ const StudyModeCard: React.FC<StudyModeCardProps> = ({ mode, description, icon, 
     } else if (mode === "Slides") {
       navigate("/slides");
     } else if (mode === "Textbook" && selectedSubject === "Science") {
-      navigate("/textbook");
-    } else if (mode === "Textbook") {
-      toast({
-        title: `${mode} Mode`,
-        description: `${mode} mode is coming soon!`,
-      });
+      window.open("https://res.cloudinary.com/dorxkjuvd/raw/upload/v1745483571/G7C1_science_wyiuwi.html", "_blank");
     } else {
       toast({
         title: `${mode} Mode`,
