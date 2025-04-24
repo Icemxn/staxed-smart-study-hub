@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../contexts/AppContext';
@@ -17,7 +18,7 @@ const StudyModeCard: React.FC<StudyModeCardProps> = ({ mode, description, icon, 
   const handleClick = () => {
     setSelectedStudyMode(mode);
     
-    if (mode === "Quiz") {
+    if (mode === "Quiz" && selectedSubject === "Science") {
       navigate("/quiz");
     } else if (mode === "Notes") {
       navigate("/notes");
